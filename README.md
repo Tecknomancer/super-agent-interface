@@ -246,9 +246,8 @@ If you encounter any issues, please:
 
 ## 📞 Contact
 
-- Creator - [Your Name](mailto:your.email@example.com)
-- Twitter - [@yourusername](https://twitter.com/yourusername)
-- Project Link: [https://github.com/yourusername/llm-voice-interface](https://github.com/yourusername/llm-voice-interface)
+- Creator - [tecknomancer](mailto:your.email@example.com)
+- Project Link: [https://github.com/yourusername/llm-voice-interface](https://github.com/Tecknomancer/llm-voice-interface)
 
 ## 📸 Screenshots
 
