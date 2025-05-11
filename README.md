@@ -21,7 +21,7 @@ A web-based interface for LLM agents with full conversational voice capabilities
 
 ## 🚀 Demo
 
-Check out the [live demo](https://your-demo-url.com) to see the interface in action.
+Check out N/A
 
 ## 📋 Prerequisites
 
@@ -240,8 +240,8 @@ llm-voice-interface/
 
 If you encounter any issues, please:
 
-1. Check the [issues page](https://github.com/yourusername/llm-voice-interface/issues) for existing solutions
-2. Consult the [documentation](https://github.com/yourusername/llm-voice-interface/wiki)
+1. Check the [issues page](https://github.com/Tecknomancer/llm-voice-interface/issues) for existing solutions
+2. Consult the [documentation](https://github.com/Tecknomancer/llm-voice-interface/wiki)
 3. Open a new issue with details about the problem and steps to reproduce it
 
 ## 📞 Contact
