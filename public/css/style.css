@@ -1,0 +1,434 @@
+:root {
+  --primary-color: #3B82F6;
+  --primary-hover: #60A5FA;
+  --secondary-color: #6D28D9;
+  --text-color: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --bg-color: #121212;
+  --container-bg: #1E1E1E;
+  --input-bg: #2D3748;
+  --border-color: #2D3748;
+  --code-bg: #0F172A;
+  --user-msg-bg: #3E4C59;
+  --ai-msg-bg: #4C1D95;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --success-color: #10B981;
+  --error-color: #EF4444;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+[data-theme="light"] {
+  --primary-color: #2563EB;
+  --primary-hover: #3B82F6;
+  --secondary-color: #7C3AED;
+  --text-color: #0F172A;
+  --text-secondary: #475569;
+  --bg-color: #F1F5F9;
+  --container-bg: #FFFFFF;
+  --input-bg: #F8FAFC;
+  --border-color: #E2E8F0;
+  --code-bg: #1E293B;
+  --user-msg-bg: #E2E8F0;
+  --ai-msg-bg: #EDE9FE;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 24px;
+  width: 24px;
+  margin-right: 12px;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.theme-label {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--input-bg);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 54px);
+  position: relative;
+  overflow: hidden;
+}
+
+.conversation-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-bg);
+  transition: background-color var(--transition-speed) ease;
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.resizer {
+  width: 6px;
+  cursor: col-resize;
+  background-color: var(--border-color);
+  transition: background-color var(--transition-speed) ease;
+}
+
+.resizer:hover, .resizer:active {
+  background-color: var(--primary-color);
+}
+
+.code-container {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--container-bg);
+  overflow-y: auto;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.code-container h3 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+#conversation-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--container-bg);
+}
+
+#conversation-history::-webkit-scrollbar {
+  width: 6px;
+}
+
+#conversation-history::-webkit-scrollbar-track {
+  background: var(--container-bg);
+}
+
+#conversation-history::-webkit-scrollbar-thumb {
+  background-color: var(--input-bg);
+  border-radius: 6px;
+}
+
+.message {
+  margin-bottom: 15px;
+  padding: 12px 16px;
+  border-radius: var(--border-radius);
+  max-width: 85%;
+  animation: fadeIn 0.3s ease-in-out;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.user {
+  background-color: var(--user-msg-bg);
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+  color: var(--text-color);
+}
+
+.assistant {
+  background-color: var(--ai-msg-bg);
+  margin-right: auto;
+  border-bottom-left-radius: 0;
+  color: var(--text-color);
+}
+
+.input-area {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--container-bg);
+  transition: background-color var(--transition-speed) ease;
+}
+
+#text-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  margin: 0 10px;
+  transition: all var(--transition-speed) ease;
+}
+
+#text-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#voice-button, #send-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#voice-button:hover, #send-button:hover {
+  background-color: var(--primary-hover);
+}
+
+#voice-button.recording {
+  background-color: var(--error-color);
+  animation: pulse 1.5s infinite;
+}
+
+.microphone-icon, .send-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+.code-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--code-bg);
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.language-indicator {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: 'Fira Code', monospace;
+}
+
+#code-display {
+  width: 100%;
+  padding: 15px;
+  margin: 0;
+  background-color: var(--code-bg);
+  color: #E2E8F0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: rgba(59, 130, 246, 0.2);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.copy-button:hover {
+  background-color: rgba(59, 130, 246, 0.3);
+}
+
+.copy-button .copy-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  display: inline-block;
+  animation: loading 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.inline-code {
+  background-color: var(--code-bg);
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  color: #E2E8F0;
+}
+
+@keyframes loading {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  } 40% { 
+    transform: scale(1.0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .conversation-container, .code-container {
+    flex: none;
+    height: 50%;
+  }
+  
+  .resizer {
+    width: 100%;
+    height: 6px;
+    cursor: row-resize;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+}

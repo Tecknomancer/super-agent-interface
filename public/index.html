@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Voice Interface</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Add highlight.js for code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M12 16v-4"></path>
+        <path d="M12 8h.01"></path>
+      </svg>
+      <h1>LLM Voice Interface</h1>
+    </div>
+    <div class="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="theme-switch" checked>
+        <span class="slider round"></span>
+      </label>
+      <span class="theme-label">Light Mode</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="conversation-container" id="conversation-container">
+      <div id="conversation-history"></div>
+      <div class="input-area">
+        <button id="voice-button" title="Click to speak">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="microphone-icon">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+        </button>
+        <input type="text" id="text-input" placeholder="Type or speak your message...">
+        <button id="send-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="resizer" id="resizer"></div>
+    <div class="code-container" id="code-container">
+      <h3>Code Window</h3>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <div class="language-indicator">javascript</div>
+          <button class="copy-button" id="copy-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre id="code-display">// Code will appear here when generated
+
+const welcomeMessage = () => {
+  console.log("Welcome to the LLM Voice Interface!");
+  return "Ready to assist with your coding needs";
+};
+
+// Example function to demonstrate syntax highlighting
+async function processData(input) {
+  try {
+    const result = await api.analyze(input);
+    if (result.success) {
+      return {
+        status: "success",
+        data: result.data,
+        timestamp: new Date()
+      };
+    } else {
+      throw new Error("Processing failed");
+    }
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    return {
+      status: "error",
+      message: error.message
+    };
+  }
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/codeHandler.js"></script>
+  <script src="js/voiceRecognition.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
