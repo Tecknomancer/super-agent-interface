@@ -224,19 +224,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📬 Contact
 
-Project Link: [https://github.com/yourusername/llm-voice-interface](https://github.com/yourusername/llm-voice-interface)
-```
-
-This comprehensive README.md file includes:
-
-1. Detailed features and capabilities of the LLM Voice Interface
-2. Complete installation and usage instructions
-3. Information about the voice recognition and synthesis features
-4. Project structure breakdown
-5. API integration details
-6. Security notes and troubleshooting guidance
-7. Development instructions and mobile support information
-8. Proper acknowledgment of key libraries and technologies used
-9. License and contribution information
-
-You can copy this entire README.md to replace your existing one in the repository. Would you like me to make any specific changes or additions to this version?
+Project Link: [https://github.com/Tecknomancer/super-agent-interface]([https://github.com/Tecknomancer/super-agent-interface)
