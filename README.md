@@ -1,6 +1,3 @@
-Let me create a comprehensive README.md for your project:
-
-```markdown
 # LLM Voice Interface
 
 A web-based interface for LLM agents with full conversational voice capabilities, featuring a separate window for code/script display. This project allows users to interact with advanced language models using both voice and text, with real-time responses in both modalities.
