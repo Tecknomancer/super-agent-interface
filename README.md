@@ -38,7 +38,7 @@ A web-based interface for LLM agents with full conversational voice capabilities
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/llm-voice-interface.git
+   git clone [https://github.com/Tecknomancer/super-agent-interface.git)
    cd llm-voice-interface
    ```
 
@@ -224,4 +224,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📬 Contact
 
-Project Link: [https://github.com/Tecknomancer/super-agent-interface]([https://github.com/Tecknomancer/super-agent-interface)
+Project Link: [https://github.com/Tecknomancer/super-agent-interface](https://github.com/Tecknomancer/super-agent-interface)
